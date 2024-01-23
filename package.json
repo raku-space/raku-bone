@@ -1,0 +1,38 @@
+{
+  "name": "raku-bone",
+  "type": "module",
+  "scripts": {
+    "bumpp": "bumpp",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "dev": "wrangler dev src/index.ts",
+    "lint": "eslint .",
+    "prepare": "simple-git-hooks",
+    "prettier": "prettier --write .",
+    "up": "taze latest -I"
+  },
+  "dependencies": {
+    "hono": "^3.12.6"
+  },
+  "devDependencies": {
+    "@ayingott/eslint-config": "^0.7.8",
+    "@ayingott/prettier-config": "^0.1.5",
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "bumpp": "^9.3.0",
+    "eslint": "^8.56.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "simple-git-hooks": "^2.9.0",
+    "taze": "^0.13.1",
+    "wrangler": "^3.23.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "prettier": "@ayingott/prettier-config"
+}
